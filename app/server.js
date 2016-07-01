@@ -35,7 +35,7 @@ wss.on('connection', function(ws) {
       broadcast(JSON.stringify({data: 'pong'}));
     }
     // bot original 
-    if (msgAr[0] == 'bot' && msgAr[1] == 'takaken' && msgAr.length == 2) {
+    else if (msgAr[0] == 'bot' && msgAr[1] == 'takaken' && msgAr.length == 2) {
       broadcast(JSON.stringify({data: 'かっこいい'}));
     }
     // bot todo
