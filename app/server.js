@@ -29,6 +29,7 @@ wss.on('connection', function(ws) {
 
   ws.on('message', function(message) {
     console.log('message:', message);
+    broadcast(JSON.stringify({data: message}));
     var msgAr = message.split(' ');
     // bot ping
     if (msgAr[0] == 'bot' && msgAr[1] == 'ping' && msgAr.length == 2) {
@@ -54,14 +55,9 @@ wss.on('connection', function(ws) {
       bot.generateHash();
       broadcast(JSON.stringify({data: bot.hash}));
     }
-    // others echo message
-    else {
-      broadcast(JSON.stringify({data: message}));
-    }
   });
 
   ws.on('close', function () {
-    db.close();
     connections = connections.filter(function (conn, i) {
       return (conn === ws) ? false : true;
     });
