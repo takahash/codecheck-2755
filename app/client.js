@@ -1,4 +1,4 @@
-var ws = new WebSocket('ws://localhost:5000/');
+var ws = new WebSocket('ws://tkhskn.me:5000/');
 
 $(function () {
   $('form').submit(function(){
